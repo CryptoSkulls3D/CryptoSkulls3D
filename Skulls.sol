@@ -37,7 +37,7 @@ contract Skulls is Ownable, ERC721A {
         return size > 0;
     }
 
-    /** @notice Public mint day after whitelist */
+    /** @notice Public mint  */
     function publicMint() external payable notContract {
         // Wait until public start
         require(
@@ -65,7 +65,7 @@ contract Skulls is Ownable, ERC721A {
         _safeMint(msg.sender, mintAmount);
     }
 
-    /** @notice Gift mints after all minted */
+    /** @notice Allow owner to mint */
     function mint(address to, uint256 amount) external onlyOwner {
         require(
             totalSupply() + amount < collectionSize,
@@ -74,7 +74,7 @@ contract Skulls is Ownable, ERC721A {
         _safeMint(to, amount);
     }
 
-    /** @notice Set Base URI */
+    /** @notice Set Start time */
     function setStart(uint256 time) external onlyOwner {
         start = time;
     }
